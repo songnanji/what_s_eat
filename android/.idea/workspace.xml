@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c1181033-9b2f-421c-9762-f2e1aa94f868" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/GradleException.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/Properties.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/alarm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/ball_pick.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/chat.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/dislike_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/favorite_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/favorite_restaurants.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/home.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/ladder.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/login.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/my_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/plan.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/random.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/register.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/roulette.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/shared_preferences_helper.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/dartpad/web_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/dartpad/web_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/../.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../what_s_eat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../what_s_eat.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2hAFpcBhI87T6JQemv2SMSoSUkC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1181033-9b2f-421c-9762-f2e1aa94f868" name="Changes" comment="" />
+      <created>1717029158827</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717029158827</updated>
+    </task>
+    <servers />
+  </component>
+</project>

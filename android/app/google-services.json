@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "796791986022",
+    "project_id": "whatseat-21afe",
+    "storage_bucket": "whatseat-21afe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796791986022:android:414d0ae7012b9529e59aa7",
+        "android_client_info": {
+          "package_name": "com.example.what_s_eat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeRC9_se38zuDj8jgk1zsrFktas2T8Ar4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
