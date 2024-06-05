@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'Server.dart';
 
 class RoulettePage extends StatefulWidget {
   @override
@@ -7,7 +8,7 @@ class RoulettePage extends StatefulWidget {
 }
 
 class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderStateMixin {
-  final List<String> _foodItems = ['Pizza', 'Burger', 'Pasta', 'Sushi', 'Salad', 'Steak'];
+  List<String> _foodItems = [];
   final Random _random = Random();
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -16,6 +17,7 @@ class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
+    _initializeFoodItems();
     _animationController = AnimationController(
       duration: const Duration(seconds: 4),
       vsync: this,
@@ -34,6 +36,14 @@ class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderSt
     });
   }
 
+  void _initializeFoodItems() {
+    final allFavorites = Server().getFavoriteFoods();
+    if (allFavorites.length >= 6) {
+      _foodItems = List.from(allFavorites)..shuffle(_random);
+      _foodItems = _foodItems.sublist(0, 6);
+    }
+  }
+
   @override
   void dispose() {
     _animationController.dispose();
@@ -41,6 +51,11 @@ class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderSt
   }
 
   void _spinWheel() {
+    if (_foodItems.length < 6) {
+      _showErrorDialog();
+      return;
+    }
+
     final double randomAngle = _random.nextDouble() * 2 * pi;
     final double totalRotation = randomAngle + 2 * pi * 4;
     _animation = Tween<double>(begin: _animation.value, end: _animation.value + totalRotation).animate(
@@ -64,11 +79,34 @@ class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderSt
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Result'),
-        content: Text('Selected food: $_selectedFood'),
+        content: Text('오늘 메뉴는  $_selectedFood'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
             child: Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showErrorDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Error'),
+        content: Text('등록된 리스트의 항목이 없거나 부족합니다. 항목을 추가하겠습니까?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text('취소'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, '/favoriteList');
+            },
+            child: Text('확인'),
           ),
         ],
       ),
@@ -80,8 +118,16 @@ class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderSt
     return Scaffold(
       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
-        title: Text('룰렛 돌리기'),
-        backgroundColor: Colors.green,
+        title: Text('Roulette'),
+        backgroundColor: Colors.lightGreen[400],
+        actions: [
+          IconButton(
+            icon: Icon(Icons.list),
+            onPressed: () {
+              Navigator.pushNamed(context, '/favoriteList');
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -102,7 +148,7 @@ class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderSt
                   ),
                   Positioned(
                     top: 0,
-                    child: Icon(Icons.arrow_drop_down, size: 50, color: Colors.red),
+                    child: Icon(Icons.arrow_drop_down, size: 50, color: Colors.red[300]),
                   ),
                 ],
               ),
@@ -111,11 +157,11 @@ class _RoulettePageState extends State<RoulettePage> with SingleTickerProviderSt
             ElevatedButton(
               onPressed: _spinWheel,
               child: Text('START'),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green[900]),
             ),
             SizedBox(height: 20),
             Text(
-              'Selected food: $_selectedFood',
+              '오늘 메뉴는 $_selectedFood',
               style: TextStyle(fontSize: 20, color: Colors.black),
             ),
           ],
@@ -136,7 +182,7 @@ class _WheelPainter extends CustomPainter {
 
     final angle = 2 * pi / items.length;
     for (int i = 0; i < items.length; i++) {
-      paint.color = i.isEven ? Colors.green : Colors.lightGreen;
+      paint.color = i.isEven ? Colors.lightGreen : Colors.green;
       canvas.drawArc(
         Rect.fromLTWH(0, 0, size.width, size.height),
         i * angle,
@@ -167,4 +213,3 @@ class _WheelPainter extends CustomPainter {
     return false;
   }
 }
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Server.dart';
 
 class DislikeListPage extends StatefulWidget {
   @override
@@ -6,14 +7,12 @@ class DislikeListPage extends StatefulWidget {
 }
 
 class _DislikeListPageState extends State<DislikeListPage> {
-  final List<String> dislikeList = [];
   final TextEditingController _controller = TextEditingController();
 
   void _addItem(String name) {
     if (name.isNotEmpty) {
       setState(() {
-        dislikeList.add(name);
-        dislikeList.sort();
+        Server().addDislikedFood(name);
       });
       _controller.clear();
     }
@@ -21,7 +20,7 @@ class _DislikeListPageState extends State<DislikeListPage> {
 
   void _deleteItem(int index) {
     setState(() {
-      dislikeList.removeAt(index);
+      Server().removeDislikedFood(Server().getDislikedFoods()[index]);
     });
   }
 
@@ -31,7 +30,7 @@ class _DislikeListPageState extends State<DislikeListPage> {
       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
         title: Text('싫어하는 음식 리스트'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightGreen[400],
       ),
       body: Column(
         children: [
@@ -59,9 +58,9 @@ class _DislikeListPageState extends State<DislikeListPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: dislikeList.length,
+              itemCount: Server().getDislikedFoods().length,
               itemBuilder: (context, index) {
-                final item = dislikeList[index];
+                final item = Server().getDislikedFoods()[index];
                 return ListTile(
                   title: Text(item),
                   trailing: IconButton(

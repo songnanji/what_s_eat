@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'home.dart';
-import 'register.dart';
+import 'Server.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,6 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _autoLogin = false;
+  bool _obscurePassword = true;
 
   @override
   void initState() {
@@ -36,16 +36,13 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? storedId = prefs.getString('id');
-    String? storedPassword = prefs.getString('password');
-
     if (_idController.text.isEmpty || _passwordController.text.isEmpty) {
       _showErrorDialog('아이디/비밀번호가 입력되지 않았습니다');
       return;
     }
 
-    if (storedId == _idController.text && storedPassword == _passwordController.text) {
+    if (Server().login(_idController.text, _passwordController.text)) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       if (_autoLogin) {
         prefs.setBool('autoLogin', true);
         prefs.setString('id', _idController.text);
@@ -115,8 +112,20 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(labelText: 'PW'),
-              obscureText: true,
+              obscureText: _obscurePassword,
+              decoration: InputDecoration(
+                labelText: 'PW',
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscurePassword = !_obscurePassword;
+                    });
+                  },
+                ),
+              ),
             ),
             SizedBox(height: 20),
             Row(
@@ -150,4 +159,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'Server.dart';
 
 class BallPickPage extends StatefulWidget {
   @override
@@ -7,30 +8,45 @@ class BallPickPage extends StatefulWidget {
 }
 
 class _BallPickPageState extends State<BallPickPage> {
-  final List<String> _foodItems = [
-    '김치찌개',
-    '비빔밥',
-    '된장찌개',
-    '불고기',
-    '비빔국수',
-    '삼겹살',
-  ];
-
   String? _selectedFood;
 
   void _pickRandomFood() {
+    List<String> availableFoods = Server().getAvailableFoods();
+    if (availableFoods.isEmpty) {
+      _showNoItemsDialog();
+      return;
+    }
+
     final random = Random();
-    final selectedFood = _foodItems[random.nextInt(_foodItems.length)];
+    final selectedFood = availableFoods[random.nextInt(availableFoods.length)];
     setState(() {
       _selectedFood = selectedFood;
     });
+  }
+
+  void _showNoItemsDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Text('등록된 리스트의 항목이 없습니다. 항목을 추가하겠습니까?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, '/dislikeList');
+            },
+            child: Text('확인'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('공 추첨'),
+        title: Text('Ball pick'),
       ),
       body: Center(
         child: Column(
@@ -38,7 +54,7 @@ class _BallPickPageState extends State<BallPickPage> {
           children: [
             Icon(
               Icons.casino,
-              size: 100,
+              size: 200,
               color: Colors.green,
             ),
             SizedBox(height: 20),
@@ -49,7 +65,7 @@ class _BallPickPageState extends State<BallPickPage> {
             SizedBox(height: 20),
             if (_selectedFood != null)
               Text(
-                '추첨 결과: $_selectedFood',
+                '오늘 메뉴는 $_selectedFood',
                 style: TextStyle(fontSize: 24),
               ),
           ],

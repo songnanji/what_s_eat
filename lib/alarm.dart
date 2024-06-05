@@ -17,7 +17,7 @@ class _AlarmPageState extends State<AlarmPage> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          content: Text('등록한 식단표를 당일 오전 8시에 알람이 갑니다'),
+          content: Text('등록한 식단표에 대해 당일 오전 8시에 알람이 갑니다:)'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -37,7 +37,7 @@ class _AlarmPageState extends State<AlarmPage> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          content: Text('오전 7시, 11시, 오후 17시에 총 3번 메뉴를 추천해드립니다'),
+          content: Text('오전 7시, 11시, 오후 17시에 총 3번 메뉴를 추천해드립니다:)'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
@@ -55,7 +55,7 @@ class _AlarmPageState extends State<AlarmPage> {
       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
         title: Text('Alarm'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightGreen[400],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -76,6 +76,7 @@ class _AlarmPageState extends State<AlarmPage> {
           ],
         ),
       ),
+
     );
   }
 

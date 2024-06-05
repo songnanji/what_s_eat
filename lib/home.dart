@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
         title: Text('오늘 뭐 먹지'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightGreen[400],
       ),
       body: Center(
         child: GridView.count(
@@ -69,7 +69,7 @@ class HomePageButton extends StatelessWidget {
         Navigator.pushNamed(context, route);
       },
       child: Card(
-        color: Colors.green[100],
+        color: Colors.lightGreen[200],
         margin: const EdgeInsets.all(8.0),
         child: Center(
           child: Column(
@@ -77,13 +77,13 @@ class HomePageButton extends StatelessWidget {
             children: <Widget>[
               Icon(
                 icon,
-                size: 50.0,
-                color: Colors.green[700],
+                size: 70.0,
+                color: Colors.green[500],
               ),
               SizedBox(height: 10),
               Text(
                 label,
-                style: TextStyle(fontSize: 16.0, color: Colors.green[900]),
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'Server.dart'; // Server 클래스 임포트 추가
 
 class PlanPage extends StatefulWidget {
   @override
@@ -7,17 +8,13 @@ class PlanPage extends StatefulWidget {
 }
 
 class _PlanPageState extends State<PlanPage> {
-  Map<DateTime, List<String>> _dietPlans = {};
-  final TextEditingController _controller = TextEditingController();
   DateTime _selectedDay = DateTime.now();
+  final TextEditingController _controller = TextEditingController();
 
   void _addPlan(String plan) {
     if (plan.isNotEmpty) {
       setState(() {
-        if (_dietPlans[_selectedDay] == null) {
-          _dietPlans[_selectedDay] = [];
-        }
-        _dietPlans[_selectedDay]!.add(plan);
+        Server().addDietPlan(_selectedDay, plan);
       });
       _controller.clear();
     }
@@ -25,15 +22,8 @@ class _PlanPageState extends State<PlanPage> {
 
   void _deletePlan(String plan) {
     setState(() {
-      _dietPlans[_selectedDay]!.remove(plan);
-      if (_dietPlans[_selectedDay]!.isEmpty) {
-        _dietPlans.remove(_selectedDay);
-      }
+      Server().removeDietPlan(_selectedDay, plan);
     });
-  }
-
-  List<String> _getPlansForDay(DateTime day) {
-    return _dietPlans[day] ?? [];
   }
 
   @override
@@ -41,8 +31,8 @@ class _PlanPageState extends State<PlanPage> {
     return Scaffold(
       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
-        title: Text('식단 계획'),
-        backgroundColor: Colors.green,
+        title: Text('Plan'),
+        backgroundColor: Colors.lightGreen[400],
       ),
       body: Column(
         children: [
@@ -60,11 +50,11 @@ class _PlanPageState extends State<PlanPage> {
             },
             calendarStyle: CalendarStyle(
               todayDecoration: BoxDecoration(
-                color: Colors.green,
+                color: Colors.lightGreen[400],
                 shape: BoxShape.circle,
               ),
               selectedDecoration: BoxDecoration(
-                color: Colors.greenAccent,
+                color: Colors.green,
                 shape: BoxShape.circle,
               ),
             ),
@@ -97,9 +87,9 @@ class _PlanPageState extends State<PlanPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: _getPlansForDay(_selectedDay).length,
+              itemCount: Server().getDietPlans(_selectedDay).length,
               itemBuilder: (context, index) {
-                final plan = _getPlansForDay(_selectedDay)[index];
+                final plan = Server().getDietPlans(_selectedDay)[index];
                 return ListTile(
                   title: Text(plan),
                   trailing: IconButton(
@@ -117,4 +107,3 @@ class _PlanPageState extends State<PlanPage> {
     );
   }
 }
-

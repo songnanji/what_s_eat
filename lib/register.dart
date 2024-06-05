@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Server.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -10,36 +11,31 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
 
-  void _register() async {
+  void _register() {
     if (_idController.text.isEmpty ||
         _passwordController.text.isEmpty ||
-        _nameController.text.isEmpty ||
-        _emailController.text.isEmpty ||
-        _phoneController.text.isEmpty) {
-      _showDialog('모든 필드를 채워주세요.');
+        _nameController.text.isEmpty) {
+      _showDialog('모든 항목을 채워주세요.');
       return;
     }
 
     if (_passwordController.text.length < 8) {
-      _showDialog('비밀번호는 8자리 이상으로 입력해주세요.');
+      _showDialog('비밀 번호는 8자리 이상으로 입력해주세요.');
       return;
     }
 
     if (!_passwordController.text.contains(RegExp(r'[0-9]')) ||
         !_passwordController.text.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      _showDialog('숫자와 특수문자 2가지를 사용해서 입력해주세요.');
+      _showDialog('숫자와 특수 문자 2가지를 사용해서 입력해주세요.');
       return;
     }
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('id', _idController.text);
-    prefs.setString('password', _passwordController.text);
-    prefs.setString('name', _nameController.text);
-    prefs.setString('email', _emailController.text);
-    prefs.setString('phone', _phoneController.text);
+    Server().register(
+      _idController.text,
+      _passwordController.text,
+      _nameController.text,
+    );
 
     _showDialog('회원가입에 성공했습니다!', success: true);
   }
@@ -90,14 +86,6 @@ class _RegisterPageState extends State<RegisterPage> {
               controller: _nameController,
               decoration: InputDecoration(labelText: '성명'),
             ),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: '이메일'),
-            ),
-            TextField(
-              controller: _phoneController,
-              decoration: InputDecoration(labelText: '전화번호'),
-            ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _register,
@@ -110,4 +98,3 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
-

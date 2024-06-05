@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Server.dart';
 
 class MyPage extends StatelessWidget {
   @override
@@ -7,19 +8,17 @@ class MyPage extends StatelessWidget {
       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
         title: Text('My Page'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightGreen[400],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            buildUserInfo('이름', '송난지'),
-            buildUserInfo('메일', 'nanji@example.com'),
-            buildUserInfo('전화번호', '010-1234-5678'),
-            SizedBox(height: 20),
+            //  buildUserInfo('이름', Server().getCurrentUserName()), // 회원 가입한 이름 표시
             buildMenuButton(context, '좋아하는 음식 리스트', Icons.favorite, '/favoriteList'),
-            buildMenuButton(context, '단골 음식점, 맛집', Icons.restaurant, '/favoriteRestaurants'),
+            buildMenuButton(context, '단골 음식점 및 맛집', Icons.restaurant, '/favoriteRestaurants'),
             buildMenuButton(context, '싫어하는 음식 리스트', Icons.cancel, '/dislikeList'),
+            buildMenuButton(context, '식단 계획표', Icons.calendar_today, '/plan'), // 식단 계획표 버튼 추가
           ],
         ),
       ),
@@ -61,18 +60,18 @@ class MyPage extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.lightGreen[100],
+            color: Colors.lightGreen[200],
             borderRadius: BorderRadius.circular(10),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 50, color: Colors.green),
+              Icon(icon, size: 50, color: Colors.lightGreen[400]),
               SizedBox(width: 10),
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green[900] ),
                 ),
               ),
             ],

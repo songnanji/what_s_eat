@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '오늘 뭐 먹지',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: ChatPage(),
-    );
-  }
-}
+import 'Server.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -51,7 +35,7 @@ class _ChatPageState extends State<ChatPage> {
     } else if (text == '3') {
       _showTasteOptions();
     } else {
-      _addBotMessage("죄송합니다... 이해하지 못했습니다.");
+      _addBotMessage("죄송합니다...ㅠ 이해하지 못했습니다.");
     }
   }
 
@@ -89,7 +73,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    _addBotMessage("안녕하세요! 식사 메뉴 선택을 도와드릴까요?(응 or 아니)");
+    _addBotMessage("안녕하세요! ^ㅁ^ 식사 메뉴 선택을 도와드릴까요?(응 or 아니)");
   }
 
   @override
@@ -98,7 +82,7 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text('Chatting'),
       ),
-      backgroundColor: Color(0xFFE6F7E9), // 파스텔톤 연두색 배경
+      backgroundColor: Colors.lightGreen[100],
       body: Column(
         children: [
           Expanded(
@@ -137,7 +121,7 @@ class _ChatPageState extends State<ChatPage> {
             child: Container(
               padding: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-                color: isBot ? Colors.white : Colors.green[100],
+                color: isBot ? Colors.white : Colors.green[200],
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Text(
@@ -185,3 +169,4 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 }
+
